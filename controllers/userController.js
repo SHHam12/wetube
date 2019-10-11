@@ -15,7 +15,7 @@ export const postJoin = async (req, res, next) => {
     res.render("join", { pageTitle: "Join" });
   } else {
     try {
-      const user = await User.create({
+      const user = await User({
         name,
         email
       });
@@ -61,23 +61,34 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
   }
 };
 
-export const getMe = (req, res) => {
-  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
-};
-
 export const postGithubLogIn = (req, res) => {
   res.redirect(routes.home);
 };
 
 export const facebookLogin = passport.authenticate("facebook");
 
-export const facebookLoginCallback = (
-  accessToken,
-  refreshToken,
-  profile,
-  cb
-) => {
-  console.log(accessToken, refreshToken, profile, cb);
+export const facebookLoginCallback = async (_, __, profile, cb) => {
+  const {
+    _json: { id, name, email }
+  } = profile;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.facebookId = id;
+      user.avatarUrl = `https://graph.facebook.com/${id}/picture?type=large`;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      facebookId: id,
+      avatarUrl: `https://graph.facebook.com/${id}/picture?type=large`
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
 };
 
 export const postFacebookLogin = (req, res) => {
@@ -87,6 +98,10 @@ export const postFacebookLogin = (req, res) => {
 export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
+};
+
+export const getMe = (req, res) => {
+  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
 export const userDetail = async (req, res) => {
