@@ -13,28 +13,26 @@ const decreaseNumber = () => {
   commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) - 1;
 };
 
-const addComment = (comment, videoId) => {
+const addComment = (comment, commentId) => {
   const li = document.createElement("li");
   const span = document.createElement("span");
   const button = document.createElement("button");
   const icon = document.createElement("i");
   button.setAttribute("class", "delete__comment");
-  button.setAttribute("id", videoId);
+  button.setAttribute("id", commentId);
   button.addEventListener("click", handleDelete);
   icon.setAttribute("class", "fas fa-backspace");
   button.appendChild(icon);
   span.innerHTML = comment;
-  span.appendChild(button);
   li.appendChild(span);
+  li.appendChild(button);
   commentList.prepend(li);
   increaseNumber();
 };
 
 const removeComment = id => {
-  const comment = document.getElementById(id).parentElement;
-  console.log(comment);
+  const comment = document.getElementById(id);
   const list = comment.parentElement;
-  console.log(list);
   list.parentElement.removeChild(list);
   decreaseNumber();
 };
@@ -49,7 +47,7 @@ const sendComment = async comment => {
     }
   });
   if (response.status === 200) {
-    addComment(comment, videoId);
+    addComment(comment, response.data);
   }
 };
 

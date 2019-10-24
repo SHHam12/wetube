@@ -152,10 +152,9 @@ export const postAddComment = async (req, res) => {
     });
     video.comments.push(newComment.id);
     video.save();
+    res.send(newComment.id).end();
   } catch (error) {
-    res.status(400);
-  } finally {
-    res.end();
+    res.status(400).end();
   }
 };
 
@@ -168,14 +167,9 @@ export const postDeleteComment = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    if (id === commentId) {
-      video.comments.pop();
-      video.save();
-    } else {
-      await Comment.findOneAndRemove({ _id: commentId });
-      video.comments.pull({ _id: commentId });
-      video.save();
-    }
+    await Comment.findOneAndRemove({ _id: commentId });
+    video.comments.pull({ _id: commentId });
+    video.save();
   } catch (error) {
     console.log(error);
     res.status(400);
