@@ -590,6 +590,13 @@ footer {
                 border-bottom-left-radius: 0px; }
         .video-detail__container .video__comments .video__comments-list li:not(:last-child) {
           margin-bottom: 15px; }
+    .video-detail__container .video__comments .delete__comment {
+      background-color: #c51a1a;
+      -webkit-border-radius: 10px;
+         -moz-border-radius: 10px;
+              border-radius: 10px;
+      width: 40px;
+      margin-right: -50px; }
 
 .user-profile {
   width: 100%;

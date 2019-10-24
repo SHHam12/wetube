@@ -34,3 +34,6 @@ block content
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
+                            if comment.creator == loggedUser.id
+                                button.delete__comment(id= comment.id)
+                                    i.fas.fa-backspace
