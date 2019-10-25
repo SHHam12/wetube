@@ -50,7 +50,8 @@
         "build": "yarn build:server && yarn build:assets && yarn copyAll",
         "prebuild": "rm -rf build",
         "tunnel": "lt --port 4000",
-        "start": "node build/init.js"
+        "start": "node build/init.js",
+        "presttat": "yarn build"
     },
     "devDependencies": {
         "@babel/cli": "^7.6.4",
