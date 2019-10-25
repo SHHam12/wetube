@@ -5,16 +5,15 @@
     "main": "index.js",
     "author": "Suk Hwa Ham",
     "dependencies": {
-        "@babel/core": "^7.1.5",
         "@babel/node": "^7.2.2",
         "@babel/polyfill": "^7.4.4",
-        "@babel/preset-env": "^7.1.5",
         "@babel/runtime": "^7.6.3",
         "autoprefixer": "^9.5.1",
         "aws-sdk": "^2.556.0",
         "axios": "^0.19.0",
+        "babel-jest": "^24.9.0",
         "babel-loader": "^8.0.6",
-        "body-parser": "^1.18.3",
+        "body-parser": "^1.19.0",
         "connect-mongo": "^3.0.0",
         "cookie-parser": "^1.4.3",
         "css-loader": "^2.1.1",
@@ -43,17 +42,26 @@
         "webpack-cli": "^3.3.1"
     },
     "scripts": {
-        "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore '.scss' --ignore 'static' ",
-        "dev:assets": "WEBPACK_ENV=development webpack -w",
-        "build:assets": "WEBPACK_ENV=production webpack",
-        "tunnel": "lt --port 4000"
+        "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static' ",
+        "dev:assets": "cd src && WEBPACK_ENV=development webpack -w",
+        "build:assets": "cd src && WEBPACK_ENV=production webpack",
+        "build:server": "babel src --out-dir build --ignore 'src/assets','src/static','src/webpack.config.js'",
+        "copyAll": "cp -R src/static build && cp -R src/views build",
+        "build": "yarn build:server && yarn build:assets && yarn copyAll",
+        "prebuild": "rm -rf build",
+        "tunnel": "lt --port 4000",
+        "start": "node build/init.js"
     },
     "devDependencies": {
+        "@babel/cli": "^7.6.4",
+        "@babel/core": "^7.6.4",
+        "@babel/preset-env": "^7.6.3",
         "eslint": "^5.16.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-config-prettier": "^4.1.0",
         "eslint-plugin-import": "^2.17.2",
         "eslint-plugin-prettier": "^3.0.1",
+        "gulp-babel": "^8.0.0",
         "nodemon": "^1.18.10",
         "prettier": "^1.17.0"
     }
