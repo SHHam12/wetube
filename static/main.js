@@ -168,6 +168,39 @@ eval("\n\n__webpack_require__(/*! core-js/es6 */ \"./node_modules/core-js/es6/in
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {\n  try {\n    var info = gen[key](arg);\n    var value = info.value;\n  } catch (error) {\n    reject(error);\n    return;\n  }\n\n  if (info.done) {\n    resolve(value);\n  } else {\n    Promise.resolve(value).then(_next, _throw);\n  }\n}\n\nfunction _asyncToGenerator(fn) {\n  return function () {\n    var self = this,\n        args = arguments;\n    return new Promise(function (resolve, reject) {\n      var gen = fn.apply(self, args);\n\n      function _next(value) {\n        asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value);\n      }\n\n      function _throw(err) {\n        asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err);\n      }\n\n      _next(undefined);\n    });\n  };\n}\n\nmodule.exports = _asyncToGenerator;\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/helpers/asyncToGenerator.js?");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function _interopRequireDefault(obj) {\n  return obj && obj.__esModule ? obj : {\n    \"default\": obj\n  };\n}\n\nmodule.exports = _interopRequireDefault;\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/helpers/interopRequireDefault.js?");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! regenerator-runtime */ \"./node_modules/regenerator-runtime/runtime.js\");\n\n//# sourceURL=webpack:///./node_modules/@babel/runtime/regenerator/index.js?");
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -3918,7 +3951,7 @@ eval("__webpack_require__(/*! ../modules/web.timers */ \"./node_modules/core-js/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(!(function webpackMissingModule() { var e = new Error(\"Cannot find module '@babel/runtime/helpers/interopRequireDefault'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: !0\n}), exports.default = getBlobDuration;\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(!(function webpackMissingModule() { var e = new Error(\"Cannot find module '@babel/runtime/regenerator'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()))),\n    _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(!(function webpackMissingModule() { var e = new Error(\"Cannot find module '@babel/runtime/helpers/asyncToGenerator'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));\n\nfunction getBlobDuration(e) {\n  return _getBlobDuration.apply(this, arguments);\n}\n\nfunction _getBlobDuration() {\n  return (_getBlobDuration = (0, _asyncToGenerator2.default)(_regenerator.default.mark(function e(r) {\n    var t, n;\n    return _regenerator.default.wrap(function (e) {\n      for (;;) switch (e.prev = e.next) {\n        case 0:\n          return t = document.createElement(\"video\"), n = new Promise(function (e) {\n            return t.addEventListener(\"loadedmetadata\", function () {\n              t.duration === 1 / 0 ? (t.currentTime = Number.MAX_SAFE_INTEGER, t.ontimeupdate = function () {\n                t.ontimeupdate = null, e(t.duration), t.currentTime = 0;\n              }) : e(t.duration);\n            });\n          }), t.src = \"string\" == typeof r || r instanceof String ? r : window.URL.createObjectURL(r), e.abrupt(\"return\", n);\n\n        case 4:\n        case \"end\":\n          return e.stop();\n      }\n    }, e);\n  }))).apply(this, arguments);\n}\n\n//# sourceURL=webpack:///./node_modules/get-blob-duration/dist/getBlobDuration.js?");
+eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"./node_modules/@babel/runtime/helpers/interopRequireDefault.js\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: !0\n}), exports.default = getBlobDuration;\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"./node_modules/@babel/runtime/regenerator/index.js\")),\n    _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"./node_modules/@babel/runtime/helpers/asyncToGenerator.js\"));\n\nfunction getBlobDuration(e) {\n  return _getBlobDuration.apply(this, arguments);\n}\n\nfunction _getBlobDuration() {\n  return (_getBlobDuration = (0, _asyncToGenerator2.default)(_regenerator.default.mark(function e(r) {\n    var t, n;\n    return _regenerator.default.wrap(function (e) {\n      for (;;) switch (e.prev = e.next) {\n        case 0:\n          return t = document.createElement(\"video\"), n = new Promise(function (e) {\n            return t.addEventListener(\"loadedmetadata\", function () {\n              t.duration === 1 / 0 ? (t.currentTime = Number.MAX_SAFE_INTEGER, t.ontimeupdate = function () {\n                t.ontimeupdate = null, e(t.duration), t.currentTime = 0;\n              }) : e(t.duration);\n            });\n          }), t.src = \"string\" == typeof r || r instanceof String ? r : window.URL.createObjectURL(r), e.abrupt(\"return\", n);\n\n        case 4:\n        case \"end\":\n          return e.stop();\n      }\n    }, e);\n  }))).apply(this, arguments);\n}\n\n//# sourceURL=webpack:///./node_modules/get-blob-duration/dist/getBlobDuration.js?");
 
 /***/ }),
 
